@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
 import random
+import cv2
+import csv
 from PIL import Image
 
 from tqdm import tqdm
@@ -54,6 +56,10 @@ def augmentation_pipeline(img_arr):
 np.random.seed(42)
 train_df = pd.read_csv(INPUT_DIR + '/train.csv')
 
+csv_file = open(f'{OUTPUT_DIR}train.csv', 'w')
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['Image', 'Id'])
+
 image_ids_pair = train_df['Id'].value_counts()
 few_id_pairs = pd.Series(image_ids_pair).where(lambda x : x<5).dropna()
 id_filename_pairs = {}
@@ -62,49 +68,11 @@ for id, value in few_id_pairs.items():
 for id, file_names in id_filename_pairs.items():
     for i in range(5 - (len(file_names))):
         file_name =  random.choice(file_names)
-        img = Image.open(f'{INPUT_DIR}/train/' + file_name)
-        img_arr = img_to_array(img).astype(int)
+        img_arr = cv2.imread(f'{INPUT_DIR}/train/{file_name}')
         img = augmentation_pipeline(img_arr)
-        # plot_images([img], None, rows=1)
+        print(f'aug_{str(i)}_{file_name}')
         im = Image.fromarray(img.astype('uint8'))
-        im.save(OUTPUT_DIR+ "aug_" + str(i) + "_" + file_name)
-
-# img = Image.open(f'{INPUT_DIR}/train/ff38054f.jpg')
-# img_arr = img_to_array(img).astype(int)
-# img = augmentation_pipeline(img_arr)
-# plot_images([img], None, rows=1)
-# im = Image.fromarray(img.astype('uint8'))
-# im.save(OUTPUT_DIR+ "aug_" + "ff38054f.jpg")
-
-
-#
-# imgs = [
-#     random_rotation(img_arr, 30, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-#     for _ in range(5)]
-# print(imgs[0])
-# plot_images(imgs, None, rows=1)
-
-# imgs = [
-#     random_shift(img_arr, wrg=0.1, hrg=0.3, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-#     for _ in range(5)]
-# plot_images(imgs, None, rows=1)
-
-# imgs = [
-#     random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-#     for _ in range(5)]
-# plot_images(imgs, None, rows=1)
-
-# imgs = [
-#     random_zoom(img_arr, zoom_range=(1.5, 0.7), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-#     for _ in range(5)]
-# plot_images(imgs, None, rows=1)
-
-# imgs = [
-#     random_greyscale(img_arr, 0.5)
-#     for _ in range(5)]
-#
-# plot_images(imgs, None, rows=1)
-
-
-
-# plt.show()
+        csv_writer.writerow(
+        [f'aug_{str(i)}_{file_name}', train_df[train_df['Image'] == file_name].iloc[0]['Id']]
+        )
+        im.save(f'{OUTPUT_DIR}aug_{str(i)}_{file_name}')
