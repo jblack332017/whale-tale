@@ -21,8 +21,9 @@ def training_data(training_sets):
         image_label_dict = { **image_label_dict, **dict( zip( df["Image"], df["Id"])) }
 
 
+
     train_imgs = np.array([ImportImage( img) for img in training_images])
-    train_labels = np.array(image_label_dict)
+    train_labels = np.array(image_label_dict[img] for img in training_images)
     return {'train_images': train_imgs, 'train_labels': train_labels}
 
 training_data(sys.argv[1:])

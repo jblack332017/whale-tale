@@ -36,12 +36,12 @@ def createModel():
 
 from prep_data import training_data
 
-training = training_data(['input'])
+training = training_data(['small'])
 
 train_images = training['train_images']
 train_labels = training['train_labels']
 
-print(type(train_images))
+print(train_labels)
 
 print('Training data shape : ', train_images.shape, train_labels.shape)
 
