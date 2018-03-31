@@ -36,7 +36,7 @@ def createModel():
 
 from prep_data import training_data
 
-training = training_data(['small'])
+training = training_data(['input'])
 
 train_images = training['train_images']
 train_labels = training['train_labels']
@@ -57,7 +57,7 @@ plt.figure(figsize=[4,2])
 
 # Display the first image in training data
 plt.subplot(121)
-plt.imshow(train_images[0,:,:], cmap='gray')
+# plt.imshow(train_images[0,:,:], cmap='gray')
 plt.title("Ground Truth : {}".format(train_labels[0]))
 
 # Display the first image in testing data
