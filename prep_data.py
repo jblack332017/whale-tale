@@ -23,7 +23,7 @@ def training_data(training_sets):
 
 
     train_imgs = np.array([ImportImage( img) for img in training_images])
-    train_labels = np.array(image_label_dict[img] for img in training_images)
-    return {'train_images': train_imgs, 'train_labels': train_labels}
+    train_labels = list(map(image_label_dict.get, training_images))
+    return {'train_images': train_imgs, 'train_labels': np.array(train_labels)}
 
 training_data(sys.argv[1:])

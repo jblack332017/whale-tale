@@ -80,7 +80,10 @@ train_data /= 255
 # test_data /= 255
 
 # Change the labels from integer to categorical data
-train_labels_one_hot = to_categorical(train_labels)
+
+from sklearn.preprocessing import LabelBinarizer
+encoder = LabelBinarizer()
+train_labels_one_hot = encoder.fit_transform(train_labels)
 # test_labels_one_hot = to_categorical(test_labels)
 
 # Display the change for category label using one-hot encoding
@@ -91,7 +94,7 @@ print('After conversion to categorical ( one-hot ) : ', train_labels_one_hot[0])
 model1 = createModel()
 batch_size = 256
 epochs = 50
-model1.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
+model1.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
 
 model1.summary()
 
