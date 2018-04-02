@@ -2,35 +2,29 @@ import sys
 import pandas as pd
 import numpy as np
 from glob import glob
-import matplotlib.pyplot as plt
-#import cv2
+import cv2
 import os
 from PIL import Image
 
-
+SIZE = 128
 def ImportImage(filename):
-    # img = cv2.imread(filename)
-    img = plt.imread(filename);
+    img = cv2.imread(filename)
+    img = cv2.resize(img ,(int(SIZE),int(SIZE)))
     return img
 
 def training_data(training_sets):
-    # Initialize empty dataframe
-    df = pd.DataFrame(columns=['Image', 'Id']);
+    training_images = []
+    image_label_dict = {}
     for training_set in training_sets:
-      # Remove ending /
-      if training_set[-1] == "/":
-        training_set = training_set[:-1];
-      # Append train.csv for each set into the dataframe
-      train = pd.read_csv(training_set + '/train.csv');
-      train['Image'] = (training_set + '/train/') + train['Image'].astype(str);
-      if df.empty:
-        df = train;
-      else:
-        df = df.append(train);
-    
-    image_paths = df['Image'].tolist();
-    train_imgs = np.array([ImportImage(path) for path in image_paths])
-    train_labels = np.array(df['Id'].tolist());
-    return {'train_images': train_imgs, 'train_labels': train_labels}
+        training_images = training_images + glob(f'{training_set}/train/*jpg')
+        df = pd.read_csv(f'{training_set}/train.csv')
+        df["Image"] = df["Image"].map( lambda x : f'{training_set}/train/{x}')
+        image_label_dict = { **image_label_dict, **dict( zip( df["Image"], df["Id"])) }
+
+
+
+    train_imgs = np.array([ImportImage( img) for img in training_images])
+    train_labels = list(map(image_label_dict.get, training_images))
+    return {'train_images': train_imgs, 'train_labels': np.array(train_labels)}
 
 training_data(sys.argv[1:])

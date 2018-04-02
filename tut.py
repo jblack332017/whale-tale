@@ -64,8 +64,10 @@ plt.title("Ground Truth : {}".format(train_labels[0]))
 # plt.subplot(122)
 # plt.imshow(test_images[0,:,:], cmap='gray')
 # plt.title("Ground Truth : {}".format(test_labels[0]))
-
+print(train_images)
+print(train_labels)
 # Find the shape of input images and create the variable input_shape
+print(train_images.shape)
 nRows,nCols,nDims = train_images.shape[1:]
 train_data = train_images.reshape(train_images.shape[0], nRows, nCols, nDims)
 # test_data = test_images.reshape(test_images.shape[0], nRows, nCols, nDims)
