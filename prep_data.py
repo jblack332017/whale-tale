@@ -10,13 +10,12 @@ from PIL import Image
 
 def ImportImage(filename):
     # img = cv2.imread(filename)
-    print(filename);
     img = plt.imread(filename);
     return img
 
 def training_data(training_sets):
     # Initialize empty dataframe
-    df = None;
+    df = pd.DataFrame(columns=['Image', 'Id']);
     for training_set in training_sets:
       # Remove ending /
       if training_set[-1] == "/":
@@ -24,13 +23,12 @@ def training_data(training_sets):
       # Append train.csv for each set into the dataframe
       train = pd.read_csv(training_set + '/train.csv');
       train['Image'] = (training_set + '/train/') + train['Image'].astype(str);
-      if df:
-        df = df.append(train);
-      else:
+      if df.empty:
         df = train;
+      else:
+        df = df.append(train);
     
     image_paths = df['Image'].tolist();
-    print(image_paths);
     train_imgs = np.array([ImportImage(path) for path in image_paths])
     train_labels = np.array(df['Id'].tolist());
     return {'train_images': train_imgs, 'train_labels': train_labels}
