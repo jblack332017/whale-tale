@@ -17,9 +17,9 @@ def training_data(training_sets):
     training_images = []
     image_label_dict = {}
     for training_set in training_sets:
-        training_images = training_images + glob(f'{training_set}/train/*jpg')
+        training_images = training_images + glob(training_set + '/train/*jpg')
         df = pd.read_csv(f'{training_set}/train.csv')
-        df["Image"] = df["Image"].map( lambda x : f'{training_set}/train/{x}')
+        df["Image"] = df["Image"].map( lambda x : training_set+ '/train/' + x)
         image_label_dict = { **image_label_dict, **dict( zip( df["Image"], df["Id"])) }
 
 
