@@ -34,7 +34,7 @@ def training_data(training_sets):
 
 
 def test_data():
-    testing_images = glob(f'test/*jpg')
+    testing_images = glob('test/*jpg')
     testing_list = listdir('test')
     testing_imgs = np.array([ImportImage( img) for img in testing_images])
     testing_names = np.array(testing_list)
