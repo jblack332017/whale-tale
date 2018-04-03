@@ -4,6 +4,7 @@ import numpy as np
 from glob import glob
 import cv2
 import os
+from os import listdir
 from PIL import Image
 
 SIZE = 128
@@ -26,5 +27,13 @@ def training_data(training_sets):
     train_imgs = np.array([ImportImage( img) for img in training_images])
     train_labels = list(map(image_label_dict.get, training_images))
     return {'train_images': train_imgs, 'train_labels': np.array(train_labels)}
+
+
+def test_data():
+    testing_images = glob(f'test/*jpg')
+    testing_list = listdir('test')
+    testing_imgs = np.array([ImportImage( img) for img in testing_images])
+    testing_names = np.array(testing_list)
+    return {'test_images': testing_imgs, 'test_names': testing_names}
 
 training_data(sys.argv[1:])
