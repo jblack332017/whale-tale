@@ -9,6 +9,12 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(plyr)
 library(dplyr)
+library(ggplot2)
+library(ggthemes)
+library(knitr)
+library(grid)
+library(gridExtra)
+library(GetoptLong)
 ```
 
 ## R Markdown
@@ -22,7 +28,20 @@ setwd("~/Projects/whale-tale")
 inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
 input_counts <- inputData %>% plyr::count("Id")
 input_freq <- table(input_counts$freq)
+input_freq <- as.data.frame(input_freq)
+distinct_classes = inputData %>% distinct(Id)
 print(input_freq)
+```
+```{r}
+ggplot(input_freq, aes(x=Var1, y=Freq)) +
+geom_bar(stat="identity", fill="#b83c31")  + 
+labs(x ="Images per class", y="Number of classes", color="#26628E") + 
+theme_wsj() +
+theme(axis.title=element_text(size=14)) + 
+ggtitle("Class and Image Ratio\nof Input") +
+theme(plot.title = element_text(hjust = 0.5)) +
+annotate("text", x = 22, y = 1750, label = qq("Total Images: @{nrow(inputData)}\n Total Classes: @{nrow(distinct_classes)}")) +
+expand_limits(x = 0)
 ```
 
 ```{r}
@@ -31,6 +50,53 @@ inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
 augmentedData <- read.csv(file="augmented/train.csv", header=TRUE, sep=",")
 combData <- rbind(inputData, augmentedData)
 input_counts <- combData %>% plyr::count("Id")
-input_freq <- table(input_counts$freq)
-print(input_freq)
+input_freq_aug <- table(input_counts$freq)
+input_freq_aug <- as.data.frame(input_freq_aug)
+distinct_classes = combData %>% distinct(Id)
+print(input_freq_aug)
+```
+
+
+```{r}
+ggplot(input_freq_aug, aes(x=Var1, y=Freq)) +
+geom_bar(stat="identity", fill="#b83c31")  + 
+labs(x ="Images per class", y="Number of classes", color="#26628E") + 
+theme_wsj() +
+theme(axis.title=element_text(size=14)) + 
+ggtitle("Class and Image Ratio\nof Input and Augmented") +
+theme(plot.title = element_text(hjust = 0.5)) +
+annotate("text", x = 18, y = 3500, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+expand_limits(x = 0)
+```
+
+
+
+```{r}
+setwd("~/Projects/whale-tale")
+inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
+augmentedData <- read.csv(file="augmented-large-no-zoom/train.csv", header=TRUE, sep=",")
+combData <- rbind(inputData, augmentedData)
+input_counts <- combData %>% plyr::count("Id")
+input_freq_large <- table(input_counts$freq)
+input_freq_large <- as.data.frame(input_freq_large)
+distinct_classes = combData %>% distinct(Id)
+print(input_freq_large)
+```
+
+```{r}
+ggplot(input_freq_large, aes(x=Var1, y=Freq)) +
+geom_bar(stat="identity", fill="#b83c31")  + 
+labs(x ="Images per class", y="Number of classes", color="#26628E") + 
+theme_wsj() +
+theme(axis.title=element_text(size=14)) + 
+ggtitle("Class and Image Ratio of\nInput and Large Augmented") +
+theme(plot.title = element_text(hjust = 0.5)) +
+annotate("text", x = 15, y = 3500, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+expand_limits(x = 0)
+```
+
+```{r, echo = TRUE, out.width="20%"}
+myimages<-list.files("small/train/", pattern = ".jpg", full.names = TRUE)
+include_graphics(myimages)
+
 ```

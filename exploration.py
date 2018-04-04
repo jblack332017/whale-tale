@@ -61,12 +61,12 @@ csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['Image', 'Id'])
 
 image_ids_pair = train_df['Id'].value_counts()
-few_id_pairs = pd.Series(image_ids_pair).where(lambda x : x<5).dropna()
+few_id_pairs = pd.Series(image_ids_pair).where(lambda x : x<10).dropna()
 id_filename_pairs = {}
 for id, value in few_id_pairs.items():
     id_filename_pairs[id] = list(train_df[train_df['Id'] == id]['Image'])
 for id, file_names in id_filename_pairs.items():
-    for i in range(5 - (len(file_names))):
+    for i in range(10 - (len(file_names))):
         file_name =  random.choice(file_names)
         img_arr = cv2.imread(INPUT_DIR + '/train/' + file_name)
         img = augmentation_pipeline(img_arr)
