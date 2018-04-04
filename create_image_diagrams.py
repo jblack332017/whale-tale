@@ -8,7 +8,11 @@ from PIL import Image
 
 from tqdm import tqdm
 
-INPUT_DIR = '../input'
+from keras.preprocessing.image import (
+    random_rotation, random_shift, random_shear, random_zoom,
+    random_channel_shift, transform_matrix_offset_center, img_to_array)
+
+INPUT_DIR = './input'
 
 def plot_images_for_filenames(filenames, labels, rows=4):
     imgs = [plt.imread(f'{INPUT_DIR}/train/{filename}') for filename in filenames]
@@ -32,10 +36,5 @@ def plot_images(imgs, labels, rows=4):
 
 np.random.seed(42)
 
-rand_rows = train_df.sample(frac=1.)[:20]
-imgs = list(rand_rows['Image'])
-labels = list(rand_rows['Id'])
-
-plot_images_for_filenames(imgs, labels)
-
-plt.show()
+train_df = pd.read_csv('./input/train.csv')
+train_df.head()
