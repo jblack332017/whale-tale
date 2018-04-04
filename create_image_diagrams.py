@@ -4,6 +4,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
+import cv2
 from PIL import Image
 
 from tqdm import tqdm
@@ -38,3 +39,60 @@ np.random.seed(42)
 
 train_df = pd.read_csv('./input/train.csv')
 train_df.head()
+file_name = "7f3495f3.jpg"
+img_arr = cv2.imread( 'input/train/' + file_name)
+
+img = Image.open('input/train/' + file_name).convert('RGB')
+img_arr = img_to_array(img)
+img_arr = img_arr.astype(int)
+print(img_arr)
+plt.imshow(img_arr)
+
+imgs = [
+    random_rotation(img_arr, 30, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    for _ in range(5)]
+plot_images(imgs, None, rows=1)
+
+imgs = [
+    random_shift(img_arr, wrg=0.1, hrg=0.3, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    for _ in range(5)]
+plot_images(imgs, None, rows=1)
+
+imgs = [
+    random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    for _ in range(5)]
+plot_images(imgs, None, rows=1)
+
+imgs = [
+    random_zoom(img_arr, zoom_range=(1.5, 0.7), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    for _ in range(5)]
+plot_images(imgs, None, rows=1)
+
+
+import random
+
+def random_greyscale(img, p):
+    if random.random() < p:
+        return np.dot(img[...,:3], [0.299, 0.587, 0.114])
+
+    return img
+
+imgs = [
+    random_greyscale(img_arr, 0.5)
+    for _ in range(5)]
+
+plot_images(imgs, None, rows=1)
+
+
+def augmentation_pipeline(img_arr):
+    img_arr = random_rotation(img_arr, 18, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_zoom(img_arr, zoom_range=(0.9, 2.0), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_greyscale(img_arr, 0.4)
+
+    return img_arr
+
+imgs = [augmentation_pipeline(img_arr) for _ in range(5)]
+plot_images(imgs, None, rows=1)
+
+plt.show()
