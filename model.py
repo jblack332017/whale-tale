@@ -44,7 +44,7 @@ train_images = training['train_images']
 train_labels = training['train_labels']
 test_images = testing['test_images']
 
-print(train_labels)
+# print(train_labels)
 
 print('Training data shape : ', train_images.shape, train_labels.shape)
 
@@ -85,15 +85,17 @@ print('After conversion to categorical ( one-hot ) : ', train_labels_one_hot[0])
 
 model1 = createModel()
 batch_size = 256
-epochs = 1
-model1.compile(optimizer='rmsprop', loss='binary_crossentropy', metrics=['accuracy'])
+epochs = 20
+model1.compile(optimizer='rmsprop', loss='categorical_crossentropy', metrics=['accuracy'])
 
 model1.summary()
 
 history = model1.fit(train_data, train_labels_one_hot, batch_size=batch_size, epochs=epochs, verbose=1)
-print(test_images)
-classes_done = model1.predict(test_images, batch_size=10)
-print("here")
+#print(test_images)
+classes_done = model1.predict_proba(test_images, batch_size=10)
+#print("here")
+for prob in classes_done[0]:
+  print(prob);
 print(classes_done)
 
 plt.figure(figsize=[8,6])
