@@ -1,0 +1,36 @@
+---
+title: "Whale_tale_charts"
+author: "Josh Black"
+date: "4/3/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(plyr)
+library(dplyr)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+setwd("~/Projects/whale-tale")
+inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
+input_counts <- inputData %>% plyr::count("Id")
+input_freq <- table(input_counts$freq)
+print(input_freq)
+```
+
+```{r}
+setwd("~/Projects/whale-tale")
+inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
+augmentedData <- read.csv(file="augmented/train.csv", header=TRUE, sep=",")
+combData <- rbind(inputData, augmentedData)
+input_counts <- combData %>% plyr::count("Id")
+input_freq <- table(input_counts$freq)
+print(input_freq)
+```
