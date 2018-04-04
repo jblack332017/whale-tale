@@ -7,11 +7,14 @@ import os
 from os import listdir
 from PIL import Image
 
+from keras.preprocessing.image import img_to_array
+
 SIZE = 128
 def ImportImage(filename):
-    img = cv2.imread(filename)
-    img = cv2.resize(img ,(int(SIZE),int(SIZE)))
-    return img
+    img = Image.open(filename).convert('RGB').resize( (SIZE,SIZE))
+    img_arr = img_to_array(img)
+    img_arr = img_arr.astype(int)
+    return img_arr
 
 def merge_two_dicts(x, y):
     z = x.copy()   # start with x's keys and values
