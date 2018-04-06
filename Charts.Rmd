@@ -47,7 +47,7 @@ expand_limits(x = 0)
 ```{r}
 setwd("~/Projects/whale-tale")
 inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
-augmentedData <- read.csv(file="augmented/train.csv", header=TRUE, sep=",")
+augmentedData <- read.csv(file="augmented-correct-colors/train.csv", header=TRUE, sep=",")
 combData <- rbind(inputData, augmentedData)
 input_counts <- combData %>% plyr::count("Id")
 input_freq_aug <- table(input_counts$freq)
