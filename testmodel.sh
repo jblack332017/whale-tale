@@ -1,6 +1,6 @@
-module load python/2/7
-module load cuda/8.0
-module load cudnn/5.1_cuda-8.0
-python getLabels.py input > input.log
-python getLabels.py input augmented > inaug.log
-python getLabels.py input augmented-no-zoom > inaugnz.log
+python whale-tale.py insub.csv input > input.log
+python whale-tale.py augcolsub.csv input augmented-correct-colors > augcol.log
+python whale-tale.py auggraysub.csv input augmented-correct-gray > auggray.log
+python whale-tale.py augrotsub.csv input augmented-correct-rotation > augrot.log
+python whale-tale.py augshearsub.csv input augmented-correct-shear > augshear.log
+python whale-tale.py augzoomsub.csv input augmented-correct-zoom > augzoom.log

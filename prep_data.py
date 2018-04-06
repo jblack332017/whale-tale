@@ -1,4 +1,3 @@
-import sys
 import pandas as pd
 import numpy as np
 from glob import glob
@@ -42,5 +41,3 @@ def test_data():
     testing_imgs = np.array([ImportImage( img) for img in testing_images])
     testing_names = np.array(testing_list)
     return {'test_images': testing_imgs, 'test_names': testing_names}
-
-training_data(sys.argv[1:])
