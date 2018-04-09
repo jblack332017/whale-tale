@@ -5,13 +5,13 @@ def getTopFive(a):
 
 def chooseLabels(probabilities, classnames, imagenames, outputPath):
   outFile = open(outputPath, 'w');
-  outFile.write("Image, Id\n");
+  outFile.write("Image,Id\n");
   for i in range(len(probabilities)):
-     predictions = getTopFive(probabilities[i]); 
+     predictions = getTopFive(probabilities[i]);
      outFile.write(imagenames[i] + ", ");
      names = [];
      for j in range(len(predictions)):
        names.append(classnames[predictions[j]]);
-     outFile.write(", ".join(names));
+     outFile.write(" ".join(names));
      outFile.write("\n");
   outFile.close();
