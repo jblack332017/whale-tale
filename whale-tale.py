@@ -9,12 +9,15 @@ from prep_data import training_data, test_data
 from model import createModel
 from trainer import trainModel
 from graphics import plotHistory
+from labelMaker import chooseLabels
 
-training = training_data(sys.argv[1:])
+output = sys.argv[1]
+training = training_data(sys.argv[2:])
 testing = test_data()
 train_images = training['train_images']
 train_labels = training['train_labels']
 test_images = testing['test_images']
+test_imagenames = testing['test_names']
 
 classes = np.unique(train_labels)
 nClasses = len(classes)
@@ -34,6 +37,6 @@ batch_size = 32;
 model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
 plotHistory(history);
 classes_done = model.predict(test_images, batch_size=batch_size)
-for prob in classes_done[0]:
-  print(prob);
-print(classes_done)
+
+chooseLabels(classes_done, classes, test_imagenames, output);
+
