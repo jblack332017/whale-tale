@@ -32,6 +32,7 @@ input_freq <- as.data.frame(input_freq)
 distinct_classes = inputData %>% distinct(Id)
 print(input_freq)
 ```
+
 ```{r}
 ggplot(input_freq, aes(x=Var1, y=Freq)) +
 geom_bar(stat="identity", fill="#b83c31")  + 
@@ -74,8 +75,22 @@ expand_limits(x = 0)
 ```{r}
 setwd("~/Projects/whale-tale")
 inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
-augmentedData <- read.csv(file="augmented-large-no-zoom/train.csv", header=TRUE, sep=",")
+
+augmentedData <- read.csv(file="augmented-correct-colors/train.csv", header=TRUE, sep=",")
 combData <- rbind(inputData, augmentedData)
+
+augmentedData <- read.csv(file="augmented-correct-gray/train.csv", header=TRUE, sep=",")
+combData <- rbind(combData, augmentedData)
+
+augmentedData <- read.csv(file="augmented-correct-rotation/train.csv", header=TRUE, sep=",")
+combData <- rbind(combData, augmentedData)
+
+augmentedData <- read.csv(file="augmented-correct-shear/train.csv", header=TRUE, sep=",")
+combData <- rbind(combData, augmentedData)
+
+augmentedData <- read.csv(file="augmented-correct-zoom/train.csv", header=TRUE, sep=",")
+combData <- rbind(combData, augmentedData)
+
 input_counts <- combData %>% plyr::count("Id")
 input_freq_large <- table(input_counts$freq)
 input_freq_large <- as.data.frame(input_freq_large)
@@ -89,9 +104,9 @@ geom_bar(stat="identity", fill="#b83c31")  +
 labs(x ="Images per class", y="Number of classes", color="#26628E") + 
 theme_wsj() +
 theme(axis.title=element_text(size=14)) + 
-ggtitle("Class and Image Ratio of\nInput and Large Augmented") +
+ggtitle("Class and Image Ratio of\nInput and All Augmented") +
 theme(plot.title = element_text(hjust = 0.5)) +
-annotate("text", x = 15, y = 3500, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+annotate("text", x = 21, y = 1750, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
 expand_limits(x = 0)
 ```
 

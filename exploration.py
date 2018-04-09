@@ -16,7 +16,7 @@ from keras.preprocessing.image import (
     random_channel_shift, transform_matrix_offset_center, img_to_array)
 
 INPUT_DIR = './input'
-OUTPUT_DIR = './augmented-correct-gray/'
+OUTPUT_DIR = './augmented-correct-large/'
 
 def plot_images_for_filenames(filenames, labels, rows=4):
     imgs = [plt.imread(INPUT_DIR + '/train/' + filename) for filename in filenames]
@@ -44,9 +44,9 @@ def random_greyscale(img, p):
     return img
 
 def augmentation_pipeline(img_arr):
-    # img_arr = random_rotation(img_arr, 18, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    # img_arr = random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    # img_arr = random_zoom(img_arr, zoom_range=(0.9, 2.0), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_rotation(img_arr, 18, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    img_arr = random_zoom(img_arr, zoom_range=(0.9, 2.0), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
     img_arr = random_greyscale(img_arr, 0.4)
 
     return img_arr
@@ -61,12 +61,12 @@ csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['Image', 'Id'])
 
 image_ids_pair = train_df['Id'].value_counts()
-few_id_pairs = pd.Series(image_ids_pair).where(lambda x : x<5).dropna()
+few_id_pairs = pd.Series(image_ids_pair).where(lambda x : x<10).dropna()
 id_filename_pairs = {}
 for id, value in few_id_pairs.items():
     id_filename_pairs[id] = list(train_df[train_df['Id'] == id]['Image'])
 for id, file_names in id_filename_pairs.items():
-    for i in range(5 - (len(file_names))):
+    for i in range(10 - (len(file_names))):
         file_name =  random.choice(file_names)
         img = Image.open('input/train/' + file_name).convert('RGB')
         img_arr = img_to_array(img)
