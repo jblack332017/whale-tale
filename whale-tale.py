@@ -13,7 +13,6 @@ from labelMaker import chooseLabels
 
 output = sys.argv[1]
 training = training_data(sys.argv[2:])
-print(training);
 testing = test_data()
 train_images = training['train_images']
 train_labels = training['train_labels']
