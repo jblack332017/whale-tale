@@ -9,22 +9,18 @@ def createModel(input_shape, nClasses):
     model = Sequential()
     # first set of CONV => RELU => POOL layers
     model.add(Conv2D(20, (5, 5), padding="same", input_shape=inputShape))
-	model.add(Activation("relu"))
-	model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+    model.add(Activation("relu"))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
     model.add(Dropout(0.25))
-
     model.add(Conv2D(50, (5, 5), padding="same"))
-	model.add(Activation("relu"))
-	model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+    model.add(Activation("relu"))
+    model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
     model.add(Dropout(0.25))
-
     model.add(Flatten())
-	model.add(Dense(500))
-	model.add(Activation("relu"))
-
-	# softmax classifier
-	model.add(Dense(nClasses))
-	model.add(Activation("softmax"))
-
-	# return the constructed network architecture
+    model.add(Dense(500))
+    model.add(Activation("relu"))
+    # softmax classifier
+    model.add(Dense(nClasses))
+    model.add(Activation("softmax"))
+    # return the constructed network architecture
     return model
