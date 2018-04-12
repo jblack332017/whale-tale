@@ -33,21 +33,49 @@ def createModel(input_shape, nClasses):
     # model.add(Dropout(0.5))
     # model.add(Dense(nClasses, activation='softmax'))
 
+    model = Sequential()
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
 
-    # Initialising the CNN
-    classifier = Sequential()
-    # Step 1 - Convolution
-    classifier.add(Conv2D(32, (3, 3), input_shape = input_shape, activation = 'relu'))
-    # Step 2 - Pooling
-    classifier.add(MaxPooling2D(pool_size = (2, 2)))
-    # Adding a second convolutional layer
-    classifier.add(Conv2D(32, (3, 3), activation = 'relu'))
-    classifier.add(MaxPooling2D(pool_size = (2, 2)))
-    # Step 3 - Flattening
-    classifier.add(Flatten())
-    # Step 4 - Full connection
-    classifier.add(Dense(nClasses, activation = 'softmax'))
-    # Compiling the CNN
-    classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
+    model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_1'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_2'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
 
-    return classifier
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_1'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_2'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_1'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_2'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_3'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_1'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_2'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_3'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_1'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_2'))
+    model.add(ZeroPadding2D((1, 1)))
+    model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_3'))
+    model.add(MaxPooling2D((2, 2), strides=(2, 2)))
+
+    top_model = Sequential()
+    top_model.add(Flatten(input_shape=input_shape))
+    top_model.add(Dense(256, activation='relu'))
+    top_model.add(Dropout(0.5))
+    top_model.add(Dense(5, activation='softmax'))
+    model.add(top_model)
+
+    return model
