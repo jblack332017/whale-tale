@@ -3,7 +3,8 @@ import numpy as np
 import keras
 import sys
 from keras.models import Sequential
-from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
+from keras.layers import Convolution2D, MaxPooling2D, ZeroPadding2D
+from keras.layers import Activation, Dropout, Flatten, Dense
 
 def createModel(input_shape, nClasses):
     # model = Sequential()
