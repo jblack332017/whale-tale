@@ -8,7 +8,7 @@ from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten, Activati
 def createModel(input_shape, nClasses):
     model = Sequential()
     # first set of CONV => RELU => POOL layers
-    model.add(Conv2D(20, (5, 5), padding="same", input_shape=inputShape))
+    model.add(Conv2D(20, (5, 5), padding="same", input_shape=input_shape))
     model.add(Activation("relu"))
     model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
     model.add(Dropout(0.25))
