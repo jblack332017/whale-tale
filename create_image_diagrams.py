@@ -21,18 +21,31 @@ def plot_images_for_filenames(filenames, labels, rows=4):
     return plot_images(imgs, labels, rows)
 
 
-def plot_images(imgs, labels, rows=4):
+def plot_images(imgs, labels, first_image, rows=4):
     # Set figure to 13 inches x 8 inches
-    figure = plt.figure(figsize=(13, 8))
+    figure, big_axes = plt.subplots( figsize=(13, 15) , nrows=rows+1, ncols=1, sharey=True)
 
-    cols = len(imgs) // rows + 1
+    row_labels = ["Original Image", "Rotation", "Shift", "Shear", "Zoom", "Greyscale", "All Techniques"]
+    for row, big_ax in enumerate(big_axes, start=0):
+        big_ax.set_title(row_labels[row], fontsize=16)
+        # Turn off axis lines and ticks of the big subplot
+        # obs alpha is 0 in RGBA string!
+        big_ax.tick_params(labelcolor=(1.,1.,1., 0.0), top='off', bottom='off', left='off', right='off')
+        # removes the white frame
+        big_ax._frameon = False
 
-    for i in range(len(imgs)):
-        subplot = figure.add_subplot(rows, cols, i + 1)
+    cols = 5
+
+    subplot = figure.add_subplot(rows+1, cols, 3)
+    subplot.axis('Off')
+    plt.imshow(first_image, cmap='gray')
+
+    for i in range(1,len(imgs)+1):
+        subplot = figure.add_subplot(rows+1, cols, i + 5)
         subplot.axis('Off')
         if labels:
             subplot.set_title(labels[i], fontsize=16)
-        plt.imshow(imgs[i], cmap='gray')
+        plt.imshow(imgs[i-1], cmap='gray')
 
 
 np.random.seed(42)
@@ -47,26 +60,27 @@ img_arr = img_to_array(img)
 img_arr = img_arr.astype(int)
 print(img_arr)
 plt.imshow(img_arr)
+imgs = []
 
-imgs = [
+imgs = imgs +  [
     random_rotation(img_arr, 30, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
     for _ in range(5)]
-plot_images(imgs, None, rows=1)
+# plot_images(imgs, None, rows=1)
 
-imgs = [
+imgs = imgs +  [
     random_shift(img_arr, wrg=0.1, hrg=0.3, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
     for _ in range(5)]
-plot_images(imgs, None, rows=1)
+# plot_images(imgs, None, rows=1)
 
-imgs = [
+imgs = imgs + [
     random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
     for _ in range(5)]
-plot_images(imgs, None, rows=1)
+# plot_images(imgs, None, rows=1)
 
-imgs = [
+imgs = imgs + [
     random_zoom(img_arr, zoom_range=(1.5, 0.7), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
     for _ in range(5)]
-plot_images(imgs, None, rows=1)
+# plot_images(imgs, None, rows=1)
 
 
 import random
@@ -77,11 +91,11 @@ def random_greyscale(img, p):
 
     return img
 
-imgs = [
+imgs = imgs +  [
     random_greyscale(img_arr, 0.5)
     for _ in range(5)]
 
-plot_images(imgs, None, rows=1)
+# plot_images(imgs, None, rows=1)
 
 
 def augmentation_pipeline(img_arr):
@@ -92,7 +106,7 @@ def augmentation_pipeline(img_arr):
 
     return img_arr
 
-imgs = [augmentation_pipeline(img_arr) for _ in range(5)]
-plot_images(imgs, None, rows=1)
+imgs = imgs +  [augmentation_pipeline(img_arr) for _ in range(5)]
+plot_images(imgs, None, img_arr, rows=6)
 
 plt.show()
