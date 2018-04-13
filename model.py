@@ -11,17 +11,42 @@ from keras.applications.vgg16 import VGG16
 
 
 def createModel(input_shape, nClasses):
-    model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
-    input = Input(shape=input_shape,name = 'image_input')
+    model = Sequential()
+    model.add(Conv2D(48, kernel_size=(3, 3),
+                     activation='relu',
+                     input_shape=input_shape))
+    model.add(Conv2D(48, (3, 3), activation='sigmoid'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Conv2D(48, (5, 5), activation='sigmoid'))
+    model.add(MaxPooling2D(pool_size=(3, 3)))
+    model.add(Dropout(0.33))
+    model.add(Flatten())
+    model.add(Dense(36, activation='sigmoid'))
+    model.add(Dropout(0.33))
+    model.add(Dense(36, activation='sigmoid'))
+    model.add(Dense(nClasses, activation='softmax'))
 
-    output_vgg16_conv = model_vgg16_conv(input)
-    #Add the fully-connected layers
-    x = Flatten(name='flatten')(output_vgg16_conv)
-    x = Dense(4096, activation='relu', name='fc1')(x)
-    x = Dense(4096, activation='relu', name='fc2')(x)
-    x = Dense(nClasses, activation='softmax', name='predictions')(x)
+    # model.compile(loss=keras.losses.categorical_crossentropy,
+    #               optimizer=keras.optimizers.Adadelta(),
+    #               metrics=['accuracy'])
+    # model.summary()
+    # model.fit_generator(image_gen.flow(x_train, y_train.toarray(), batch_size=batch_size),
+    #           steps_per_epoch=  x_train.shape[0]//batch_size,
+    #           epochs=epochs,
+    #           verbose=1,
+    #           class_weight=class_weight_dic)
 
-    model = Model(input=input, output=x)
+    # model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
+    # input = Input(shape=input_shape,name = 'image_input')
+    #
+    # output_vgg16_conv = model_vgg16_conv(input)
+    # #Add the fully-connected layers
+    # x = Flatten(name='flatten')(output_vgg16_conv)
+    # x = Dense(4096, activation='relu', name='fc1')(x)
+    # x = Dense(4096, activation='relu', name='fc2')(x)
+    # x = Dense(nClasses, activation='softmax', name='predictions')(x)
+    #
+    # model = Model(input=input, output=x)
 
 
 
