@@ -110,6 +110,31 @@ annotate("text", x = 21, y = 1750, label = qq("Total Images: @{nrow(combData)}\n
 expand_limits(x = 0)
 ```
 
+
+```{r}
+setwd("~/Projects/whale-tale")
+inputData <- read.csv(file="input-sans-new-whale/train.csv", header=TRUE, sep=",")
+augmentedData <- read.csv(file="augmented-correct-large/train.csv", header=TRUE, sep=",")
+combData <- rbind(inputData, augmentedData)
+input_counts <- combData %>% plyr::count("Id")
+input_freq_aug <- table(input_counts$freq)
+input_freq_aug <- as.data.frame(input_freq_aug)
+distinct_classes = combData %>% distinct(Id)
+print(input_freq_aug)
+```
+
+```{r}
+ggplot(input_freq_aug, aes(x=Var1, y=Freq)) +
+geom_bar(stat="identity", fill="#b83c31")  + 
+labs(x ="Images per class", y="Number of classes", color="#26628E") + 
+theme_wsj() +
+theme(axis.title=element_text(size=14)) + 
+ggtitle("Class and Image Ratio of\nInput and All Augmented") +
+theme(plot.title = element_text(hjust = 0.5)) +
+annotate("text", x = 15, y = 1750, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+expand_limits(x = 0)
+```
+
 ```{r, echo = TRUE, out.width="20%"}
 myimages<-list.files("small/train/", pattern = ".jpg", full.names = TRUE)
 include_graphics(myimages)

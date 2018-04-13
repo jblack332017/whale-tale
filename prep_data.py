@@ -8,7 +8,7 @@ from PIL import Image
 
 from keras.preprocessing.image import img_to_array
 
-SIZE = 256
+SIZE = 128
 def ImportImage(filename):
     img = Image.open(filename).convert('LA').resize((SIZE,SIZE))
     img_arr = img_to_array(img)
