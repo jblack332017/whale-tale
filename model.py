@@ -6,6 +6,7 @@ from keras.models import Sequential, Model, load_model
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten, Input
 from keras import applications
 from keras import optimizers
+from keras.applications.vgg16 import VGG16
 
 
 
@@ -21,7 +22,7 @@ def createModel(input_shape, nClasses):
     x = Dense(nClasses, activation='softmax', name='predictions')(x)
 
     my_model = Model(input=input, output=x)
-    
+
 
 
     # base_model = applications.VGG16(weights='imagenet', include_top=False, input_shape=input_shape)
