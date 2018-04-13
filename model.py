@@ -21,7 +21,7 @@ def createModel(input_shape, nClasses):
     x = Dense(4096, activation='relu', name='fc2')(x)
     x = Dense(nClasses, activation='softmax', name='predictions')(x)
 
-    my_model = Model(input=input, output=x)
+    model = Model(input=input, output=x)
 
 
 
