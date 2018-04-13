@@ -2,35 +2,48 @@ from __future__ import print_function
 import numpy as np
 import keras
 import sys
-from keras.models import Sequential
+from keras.models import Sequential, Model, load_model
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
+from keras import applications
+from keras import optimizers
 
 def createModel(input_shape, nClasses):
-    model = Sequential()
-    # The first two layers with 32 filters of window size 3x3
-    model.add(Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=input_shape))
-    model.add(Conv2D(32, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    base_model = applications.VGG16(weights='imagenet', include_top=False, input_shape=input_shape)
 
-    model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
-    model.add(Conv2D(64, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    add_model = Sequential()
+    add_model.add(Flatten(input_shape=base_model.output_shape[1:]))
+    add_model.add(Dense(256, activation='relu'))
+    add_model.add(Dense(nClasses, activation='softmax'))
 
-    model.add(Conv2D(128, (3, 3), padding='same', activation='relu'))
-    model.add(Conv2D(128, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
+    model = Model(inputs=base_model.input, outputs=add_model(base_model.output))
+    model.compile(loss='binary_crossentropy', optimizer=optimizers.SGD(lr=1e-4, momentum=0.9),
+                  metrics=['accuracy'])
 
-    model.add(Conv2D(256, (3, 3), padding='same', activation='relu'))
-    model.add(Conv2D(256, (3, 3), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2, 2)))
-    model.add(Dropout(0.25))
-
-    model.add(Flatten())
-    model.add(Dense(512, activation='relu'))
-    model.add(Dropout(0.5))
-    model.add(Dense(nClasses, activation='softmax'))
+    # model = Sequential()
+    # # The first two layers with 32 filters of window size 3x3
+    # model.add(Conv2D(32, (3, 3), padding='same', activation='relu', input_shape=input_shape))
+    # model.add(Conv2D(32, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.25))
+    #
+    # model.add(Conv2D(64, (3, 3), padding='same', activation='relu'))
+    # model.add(Conv2D(64, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.25))
+    #
+    # model.add(Conv2D(128, (3, 3), padding='same', activation='relu'))
+    # model.add(Conv2D(128, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.25))
+    #
+    # model.add(Conv2D(256, (3, 3), padding='same', activation='relu'))
+    # model.add(Conv2D(256, (3, 3), activation='relu'))
+    # model.add(MaxPooling2D(pool_size=(2, 2)))
+    # model.add(Dropout(0.25))
+    #
+    # model.add(Flatten())
+    # model.add(Dense(512, activation='relu'))
+    # model.add(Dropout(0.5))
+    # model.add(Dense(nClasses, activation='softmax'))
 
     return model
