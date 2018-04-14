@@ -7,6 +7,8 @@ from keras.models import Sequential
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
 from prep_data import training_data, test_data
 from model import createModel
+import residualmodel
+from resnet import ResnetBuilder
 from trainer import trainModel
 from graphics import plotHistory
 from labelMaker import chooseLabels
@@ -28,13 +30,14 @@ print('Output classes : ', classes)
 # Find the shape of input images and create the variable input_shape
 nRows,nCols,nDims = train_images.shape[1:]
 train_data = train_images.reshape(train_images.shape[0], nRows, nCols, nDims)
-input_shape = (nRows, nCols, nDims)
+input_shape = (nDims, nRows, nCols)
 
 # Training parameters
 epochs = 20;
 batch_size = 32;
 
-model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+model = ResnetBuilder.build_resnet_34(input_shape, nClasses)
+model, history = trainModel(model, train_data, train_labels, epochs, batch_size);
 plotHistory(history);
 classes_done = model.predict(test_images, batch_size=batch_size)
 
