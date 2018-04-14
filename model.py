@@ -2,7 +2,7 @@ from __future__ import print_function
 import numpy as np
 import keras
 import sys
-from keras.models import Sequential
+from keras.models import Model, Sequential
 from keras.layers import Dense, Conv2D, MaxPooling2D, Dropout, Flatten
 
 def createModel(input_shape, nClasses):
@@ -31,6 +31,6 @@ def createModel(input_shape, nClasses):
     model.add(Flatten())
     model.add(Dense(512, activation='relu'))
     model.add(Dropout(0.5))
-    model.add(Dense(nClasses, activation='softmax'))
+    model.add(Dense(nClasses, activation='sigmoid'))
 
     return model
