@@ -1,0 +1,70 @@
+Using TensorFlow backend.
+2018-04-12 07:00:19.309130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 07:00:19.309295: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 07:00:19.309303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 07:00:19.309313: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 07:21:36.543654: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 07:21:36.543861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 07:21:36.543870: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 07:21:36.543880: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 08:01:06.382085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 08:01:06.382260: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 08:01:06.382268: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 08:01:06.382278: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 08:41:36.632414: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 08:41:36.632613: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 08:41:36.632621: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 08:41:36.632631: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 09:22:07.588157: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 09:22:07.588332: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 09:22:07.588339: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 09:22:07.588350: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 10:02:27.995809: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 10:02:27.996010: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 10:02:27.996019: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 10:02:27.996030: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+Using TensorFlow backend.
+2018-04-12 10:45:35.371085: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-12 10:45:35.371279: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 
+2018-04-12 10:45:35.371291: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y 
+2018-04-12 10:45:35.371303: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)

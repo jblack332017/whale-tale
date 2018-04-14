@@ -1,0 +1,13 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 14, in createModel
+    model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/applications/vgg16.py", line 169, in VGG16
+    model.load_weights(weights_path)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/topology.py", line 2565, in load_weights
+    raise ImportError('`load_weights` requires h5py.')
+ImportError: `load_weights` requires h5py.
+Using TensorFlow backend.
+slurmstepd: error: *** JOB 24303654 ON m8g-2-6 CANCELLED AT 2018-04-12T22:43:55 ***

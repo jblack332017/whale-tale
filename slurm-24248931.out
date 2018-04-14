@@ -89,3 +89,93 @@ Free memory: 11.11GiB
 2018-04-11 18:21:46.522861: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:85:00.0)
 2018-04-11 18:21:46.522866: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:86:00.0)
 Using TensorFlow backend.
+2018-04-11 19:08:32.260283: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 19:08:32.453835: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5f7d080 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 19:08:32.455022: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 1 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:07:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 19:08:32.654359: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5f80da0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 19:08:32.655537: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 2 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:85:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 19:08:32.861023: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5f84c10 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 19:08:32.862242: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 3 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:86:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 19:08:32.862967: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 2
+2018-04-11 19:08:32.862982: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 3
+2018-04-11 19:08:32.863003: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 2
+2018-04-11 19:08:32.863012: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 3
+2018-04-11 19:08:32.863020: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 0
+2018-04-11 19:08:32.863028: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 1
+2018-04-11 19:08:32.863609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 0
+2018-04-11 19:08:32.863621: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 1
+2018-04-11 19:08:32.863685: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 1 2 3 
+2018-04-11 19:08:32.863692: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y Y N N 
+2018-04-11 19:08:32.863697: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y Y N N 
+2018-04-11 19:08:32.863701: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 2:   N N Y Y 
+2018-04-11 19:08:32.863705: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 3:   N N Y Y 
+2018-04-11 19:08:32.863719: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-11 19:08:32.863725: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:07:00.0)
+2018-04-11 19:08:32.863730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:85:00.0)
+2018-04-11 19:08:32.863735: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:86:00.0)
+Using TensorFlow backend.
+2018-04-11 20:04:25.883368: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 10.57GiB
+2018-04-11 20:04:26.079032: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5580c60 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 20:04:26.080240: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 1 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:07:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 20:04:26.281745: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x5584980 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 20:04:26.282942: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 2 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:85:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 20:04:26.487782: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x55887f0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 20:04:26.488996: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 3 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:86:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 20:04:26.489706: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 2
+2018-04-11 20:04:26.489720: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 3
+2018-04-11 20:04:26.489740: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 2
+2018-04-11 20:04:26.489748: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 3
+2018-04-11 20:04:26.489755: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 0
+2018-04-11 20:04:26.489762: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 1
+2018-04-11 20:04:26.490341: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 0
+2018-04-11 20:04:26.490352: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 1
+2018-04-11 20:04:26.490413: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 1 2 3 
+2018-04-11 20:04:26.490419: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y Y N N 
+2018-04-11 20:04:26.490423: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y Y N N 
+2018-04-11 20:04:26.490427: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 2:   N N Y Y 
+2018-04-11 20:04:26.490430: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 3:   N N Y Y 
+2018-04-11 20:04:26.490443: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-11 20:04:26.490448: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:07:00.0)
+2018-04-11 20:04:26.490452: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:85:00.0)
+2018-04-11 20:04:26.490456: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:86:00.0)
+slurmstepd: error: *** JOB 24248931 ON m8g-2-2 CANCELLED AT 2018-04-11T20:52:31 DUE TO TIME LIMIT ***

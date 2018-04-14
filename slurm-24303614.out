@@ -1,0 +1,9 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 13, in createModel
+    model_vgg16_conv = VGG16(weights='imagenet', include_top=False)
+NameError: global name 'VGG16' is not defined
+Using TensorFlow backend.
+slurmstepd: error: *** JOB 24303614 ON m8g-2-6 CANCELLED AT 2018-04-12T22:23:58 ***

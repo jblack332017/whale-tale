@@ -1,0 +1,9 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37, in createModel
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape))
+NameError: global name 'ZeroPadding2D' is not defined
+Using TensorFlow backend.
+slurmstepd: error: *** JOB 24250132 ON m8g-2-7 CANCELLED AT 2018-04-11T22:41:03 ***

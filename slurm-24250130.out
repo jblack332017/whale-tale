@@ -1,0 +1,56 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 9, in <module>
+    from model import createModel
+  File "/zhome/jblack33/bio465/whale-tale/model.py", line 37
+    model.add(ZeroPadding2D((1, 1), input_shape=input_shape)))
+                                                             ^
+SyntaxError: invalid syntax

@@ -1,0 +1,112 @@
+Using TensorFlow backend.
+/zhome/jblack33/bio465/whale-tale/model.py:40: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_1")`
+  model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:42: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_2")`
+  model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:46: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_1")`
+  model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:48: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_2")`
+  model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:52: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_1")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:54: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_2")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:56: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_3")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_3'))
+/zhome/jblack33/bio465/whale-tale/model.py:60: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_1")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:62: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_2")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:64: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_3")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_3'))
+/zhome/jblack33/bio465/whale-tale/model.py:68: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_1")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:70: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_2")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:72: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_3")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_3'))
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/trainer.py", line 20, in trainModel
+    history = model.fit(train_data, train_labels_one_hot, batch_size=batch_size, epochs=epochs, verbose=1)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/models.py", line 870, in fit
+    initial_epoch=initial_epoch)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1435, in fit
+    batch_size=batch_size)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1315, in _standardize_user_data
+    exception_prefix='target')
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 139, in _standardize_input_data
+    str(array.shape))
+ValueError: Error when checking target: expected sequential_2 to have shape (None, 5) but got array with shape (9850, 4251)
+Using TensorFlow backend.
+/zhome/jblack33/bio465/whale-tale/model.py:40: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_1")`
+  model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:42: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_2")`
+  model.add(Convolution2D(64, 3, 3, activation='relu', name='conv1_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:46: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_1")`
+  model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:48: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_2")`
+  model.add(Convolution2D(128, 3, 3, activation='relu', name='conv2_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:52: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_1")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:54: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_2")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:56: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_3")`
+  model.add(Convolution2D(256, 3, 3, activation='relu', name='conv3_3'))
+/zhome/jblack33/bio465/whale-tale/model.py:60: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_1")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:62: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_2")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:64: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_3")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv4_3'))
+/zhome/jblack33/bio465/whale-tale/model.py:68: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_1")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_1'))
+/zhome/jblack33/bio465/whale-tale/model.py:70: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_2")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_2'))
+/zhome/jblack33/bio465/whale-tale/model.py:72: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_3")`
+  model.add(Convolution2D(512, 3, 3, activation='relu', name='conv5_3'))
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/trainer.py", line 20, in trainModel
+    history = model.fit(train_data, train_labels_one_hot, batch_size=batch_size, epochs=epochs, verbose=1)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/models.py", line 870, in fit
+    initial_epoch=initial_epoch)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1435, in fit
+    batch_size=batch_size)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1315, in _standardize_user_data
+    exception_prefix='target')
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 139, in _standardize_input_data
+    str(array.shape))
+ValueError: Error when checking target: expected sequential_2 to have shape (None, 5) but got array with shape (23008, 4251)
+Using TensorFlow backend.
+/zhome/jblack33/bio465/whale-tale/model.py:40: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_1")`
+/zhome/jblack33/bio465/whale-tale/model.py:42: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(64, (3, 3), activation="relu", name="conv1_2")`
+/zhome/jblack33/bio465/whale-tale/model.py:46: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_1")`
+/zhome/jblack33/bio465/whale-tale/model.py:48: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(128, (3, 3), activation="relu", name="conv2_2")`
+/zhome/jblack33/bio465/whale-tale/model.py:52: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_1")`
+/zhome/jblack33/bio465/whale-tale/model.py:54: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_2")`
+/zhome/jblack33/bio465/whale-tale/model.py:56: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(256, (3, 3), activation="relu", name="conv3_3")`
+/zhome/jblack33/bio465/whale-tale/model.py:60: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_1")`
+/zhome/jblack33/bio465/whale-tale/model.py:62: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_2")`
+/zhome/jblack33/bio465/whale-tale/model.py:64: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv4_3")`
+/zhome/jblack33/bio465/whale-tale/model.py:68: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_1")`
+/zhome/jblack33/bio465/whale-tale/model.py:70: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_2")`
+/zhome/jblack33/bio465/whale-tale/model.py:72: UserWarning: Update your `Conv2D` call to the Keras 2 API: `Conv2D(512, (3, 3), activation="relu", name="conv5_3")`
+Traceback (most recent call last):
+  File "whale-tale.py", line 37, in <module>
+    model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);
+  File "/zhome/jblack33/bio465/whale-tale/trainer.py", line 20, in trainModel
+    history = model.fit(train_data, train_labels_one_hot, batch_size=batch_size, epochs=epochs, verbose=1)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/models.py", line 870, in fit
+    initial_epoch=initial_epoch)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1435, in fit
+    batch_size=batch_size)
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 1315, in _standardize_user_data
+    exception_prefix='target')
+  File "/apps/python/2.7.11/gcc-5.3.0/lib/python2.7/site-packages/keras/engine/training.py", line 139, in _standardize_input_data
+    str(array.shape))
+ValueError: Error when checking target: expected sequential_2 to have shape (None, 5) but got array with shape (23008, 4251)
+Using TensorFlow backend.
+slurmstepd: error: *** JOB 24250140 ON m8g-2-1 CANCELLED AT 2018-04-11T23:01:58 ***

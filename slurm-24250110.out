@@ -1,0 +1,46 @@
+Using TensorFlow backend.
+2018-04-11 22:17:18.961864: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 22:17:19.154758: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x4fb5540 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 22:17:19.155949: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 1 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:07:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 22:17:19.355702: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x4fb9220 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 22:17:19.357024: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 2 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:84:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 22:17:19.562153: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x4fbcf00 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-11 22:17:19.563401: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 3 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:85:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-11 22:17:19.564137: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 2
+2018-04-11 22:17:19.564152: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 3
+2018-04-11 22:17:19.564173: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 2
+2018-04-11 22:17:19.564182: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 3
+2018-04-11 22:17:19.564191: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 0
+2018-04-11 22:17:19.564199: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 1
+2018-04-11 22:17:19.564786: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 0
+2018-04-11 22:17:19.564800: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 1
+2018-04-11 22:17:19.564862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 1 2 3 
+2018-04-11 22:17:19.564869: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y Y N N 
+2018-04-11 22:17:19.564873: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y Y N N 
+2018-04-11 22:17:19.564877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 2:   N N Y Y 
+2018-04-11 22:17:19.564881: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 3:   N N Y Y 
+2018-04-11 22:17:19.564895: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-11 22:17:19.564900: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:07:00.0)
+2018-04-11 22:17:19.564906: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:84:00.0)
+2018-04-11 22:17:19.564911: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:85:00.0)
+slurmstepd: error: *** JOB 24250110 ON m8g-2-1 CANCELLED AT 2018-04-11T22:30:12 ***

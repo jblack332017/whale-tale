@@ -31,7 +31,7 @@ train_data = train_images.reshape(train_images.shape[0], nRows, nCols, nDims)
 input_shape = (nRows, nCols, nDims)
 
 # Training parameters
-epochs = 20;
+epochs = 50;
 batch_size = 32;
 
 model, history = trainModel(createModel(input_shape, nClasses), train_data, train_labels, epochs, batch_size);

@@ -1,0 +1,7 @@
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "whale-tale.py", line 15, in <module>
+    training = training_data(sys.argv[2:])
+  File "/zhome/jblack33/bio465/whale-tale/prep_data.py", line 33, in training_data
+    train_imgs = np.array([ImportImage( img) for img in training_images])
+MemoryError
