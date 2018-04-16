@@ -16,7 +16,7 @@ from keras.preprocessing.image import (
     random_channel_shift, transform_matrix_offset_center, img_to_array)
 
 INPUT_DIR = './input'
-OUTPUT_DIR = './augmented-correct-large/'
+OUTPUT_DIR = './augmented-duplicated/'
 
 def plot_images_for_filenames(filenames, labels, rows=4):
     imgs = [plt.imread(INPUT_DIR + '/train/' + filename) for filename in filenames]
@@ -44,10 +44,10 @@ def random_greyscale(img, p):
     return img
 
 def augmentation_pipeline(img_arr):
-    img_arr = random_rotation(img_arr, 18, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    img_arr = random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    img_arr = random_zoom(img_arr, zoom_range=(0.9, 2.0), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    img_arr = random_greyscale(img_arr, 0.4)
+    # img_arr = random_rotation(img_arr, 18, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    # img_arr = random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    # img_arr = random_zoom(img_arr, zoom_range=(0.9, 2.0), row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+    # img_arr = random_greyscale(img_arr, 0.4)
 
     return img_arr
 

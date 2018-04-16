@@ -2,7 +2,9 @@
 title: "Whale_tale_charts"
 author: "Josh Black"
 date: "4/3/2018"
-output: html_document
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -15,6 +17,8 @@ library(knitr)
 library(grid)
 library(gridExtra)
 library(GetoptLong)
+library(xtable)
+library(knitr)
 ```
 
 ## R Markdown
@@ -39,7 +43,7 @@ geom_bar(stat="identity", fill="#b83c31")  +
 labs(x ="Images per class", y="Number of classes", color="#26628E") + 
 theme_wsj() +
 theme(axis.title=element_text(size=14)) + 
-ggtitle("Class and Image Ratio\nof Input") +
+ggtitle("Class and Image Ratio\nof Original Images") +
 theme(plot.title = element_text(hjust = 0.5)) +
 annotate("text", x = 22, y = 1750, label = qq("Total Images: @{nrow(inputData)}\n Total Classes: @{nrow(distinct_classes)}")) +
 expand_limits(x = 0)
@@ -49,11 +53,11 @@ expand_limits(x = 0)
 setwd("~/Projects/whale-tale")
 inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
 augmentedData <- read.csv(file="augmented-correct-colors/train.csv", header=TRUE, sep=",")
-combData <- rbind(inputData, augmentedData)
-input_counts <- combData %>% plyr::count("Id")
+combData_aug <- rbind(inputData, augmentedData)
+input_counts <- combData_aug %>% plyr::count("Id")
 input_freq_aug <- table(input_counts$freq)
 input_freq_aug <- as.data.frame(input_freq_aug)
-distinct_classes = combData %>% distinct(Id)
+distinct_classes = combData_aug %>% distinct(Id)
 print(input_freq_aug)
 ```
 
@@ -66,7 +70,7 @@ theme_wsj() +
 theme(axis.title=element_text(size=14)) + 
 ggtitle("Class and Image Ratio\nof Input and Augmented") +
 theme(plot.title = element_text(hjust = 0.5)) +
-annotate("text", x = 18, y = 3500, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+annotate("text", x = 18, y = 3500, label = qq("Total Images: @{nrow(combData_aug)}\nTotal Classes: @{nrow(distinct_classes)}")) +
 expand_limits(x = 0)
 ```
 
@@ -77,24 +81,49 @@ setwd("~/Projects/whale-tale")
 inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
 
 augmentedData <- read.csv(file="augmented-correct-colors/train.csv", header=TRUE, sep=",")
-combData <- rbind(inputData, augmentedData)
+combData_all <- rbind(inputData, augmentedData)
 
 augmentedData <- read.csv(file="augmented-correct-gray/train.csv", header=TRUE, sep=",")
-combData <- rbind(combData, augmentedData)
+combData_all <- rbind(combData_all, augmentedData)
 
 augmentedData <- read.csv(file="augmented-correct-rotation/train.csv", header=TRUE, sep=",")
-combData <- rbind(combData, augmentedData)
+combData_all <- rbind(combData_all, augmentedData)
 
 augmentedData <- read.csv(file="augmented-correct-shear/train.csv", header=TRUE, sep=",")
-combData <- rbind(combData, augmentedData)
+combData_all <- rbind(combData_all, augmentedData)
 
 augmentedData <- read.csv(file="augmented-correct-zoom/train.csv", header=TRUE, sep=",")
-combData <- rbind(combData, augmentedData)
+combData_all <- rbind(combData_all, augmentedData)
 
-input_counts <- combData %>% plyr::count("Id")
+input_counts <- combData_all %>% plyr::count("Id")
+input_freq_all_sets <- table(input_counts$freq)
+input_freq_all_sets <- as.data.frame(input_freq_all_sets)
+distinct_classes = combData_all %>% distinct(Id)
+print(input_freq_all_sets)
+```
+
+```{r}
+ggplot(input_freq_all_sets, aes(x=Var1, y=Freq)) +
+geom_bar(stat="identity", fill="#b83c31")  + 
+labs(x ="Images per class", y="Number of classes", color="#26628E") + 
+theme_wsj() +
+theme(axis.title=element_text(size=14)) + 
+ggtitle("Class and Image Ratio of\nInput and All Augmented") +
+theme(plot.title = element_text(hjust = 0.5)) +
+annotate("text", x = 21, y = 1750, label = qq("Total Images: @{nrow(combData_all)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+expand_limits(x = 0)
+```
+
+
+```{r}
+setwd("~/Projects/whale-tale")
+inputData <- read.csv(file="input/train.csv", header=TRUE, sep=",")
+augmentedData <- read.csv(file="augmented-correct-large/train.csv", header=TRUE, sep=",")
+combData_large <- rbind(inputData, augmentedData)
+input_counts <- combData_large %>% plyr::count("Id")
 input_freq_large <- table(input_counts$freq)
 input_freq_large <- as.data.frame(input_freq_large)
-distinct_classes = combData %>% distinct(Id)
+distinct_classes = combData_large %>% distinct(Id)
 print(input_freq_large)
 ```
 
@@ -104,14 +133,51 @@ geom_bar(stat="identity", fill="#b83c31")  +
 labs(x ="Images per class", y="Number of classes", color="#26628E") + 
 theme_wsj() +
 theme(axis.title=element_text(size=14)) + 
-ggtitle("Class and Image Ratio of\nInput and All Augmented") +
+ggtitle("Class and Image Ratio of\nInput and Largest Set") +
 theme(plot.title = element_text(hjust = 0.5)) +
-annotate("text", x = 21, y = 1750, label = qq("Total Images: @{nrow(combData)}\nTotal Classes: @{nrow(distinct_classes)}")) +
+annotate("text", x = 10, y = 1750, label = qq("Total Images: @{nrow(combData_large)}\nTotal Classes: @{nrow(distinct_classes)}")) +
 expand_limits(x = 0)
 ```
 
-```{r, echo = TRUE, out.width="20%"}
-myimages<-list.files("small/train/", pattern = ".jpg", full.names = TRUE)
-include_graphics(myimages)
+```{r results='asis'}
+
+countsFrame <- data.frame(matrix(ncol = 3, nrow = 0))
+x <- c("Training Set", "Total Images per Set", "Image Count in Least Represented Class")
+colnames(countsFrame) <- x
+
+de<-data.frame("Original Images", nrow(inputData), min(as.numeric(as.character(input_freq$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Rotation", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Shift", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Shear", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Zoom", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Greyscale", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Random Combination of All Techniques", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+de<-data.frame("Large Combination of All Techniques", nrow(combData_large), min(as.numeric(as.character(input_freq_large$Var1))))
+colnames(de) <- x
+countsFrame <- rbind(countsFrame, de)
+
+kable(countsFrame)
+
 
 ```
