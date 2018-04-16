@@ -24,6 +24,7 @@ def training_data(training_sets):
     training_images = []
     image_label_dict = {}
     for training_set in training_sets:
+        print ('asdfasdfa');
         training_images = training_images + glob(training_set + '/train/*jpg')
         df = pd.read_csv(training_set + '/train.csv')
         df["Image"] = df["Image"].map( lambda x : training_set+ '/train/' + x)
@@ -35,9 +36,9 @@ def training_data(training_sets):
     return {'train_images': train_imgs, 'train_labels': np.array(train_labels)}
 
 
-def test_data():
-    testing_images = glob('test/*jpg')
-    testing_list = listdir('test')
+def test_data(test_folder):
+    testing_images = glob(test_folder + '/*jpg')
+    testing_list = listdir(test_folder)
     testing_imgs = np.array([ImportImage( img) for img in testing_images])
     testing_names = np.array(testing_list)
     return {'test_images': testing_imgs, 'test_names': testing_names}

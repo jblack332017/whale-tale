@@ -15,8 +15,8 @@ from labelMaker import chooseLabels
 
 output = sys.argv[1]
 epochs = int(sys.argv[2])
-training = training_data(sys.argv[3:])
-testing = test_data()
+training = training_data(sys.argv[4:])
+testing = test_data(sys.argv[3])
 train_images = training['train_images']
 train_labels = training['train_labels']
 test_images = testing['test_images']

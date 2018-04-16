@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --time=02:00:00   # walltime
-#SBATCH --ntasks=4   # number of processor cores (i.e. tasks)
+#SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
 #SBATCH --gres=gpu:1
 #SBATCH --mem-per-cpu=65536M   # memory per CPU core
@@ -16,4 +16,4 @@ module load python/2/7
 module load cuda/8.0
 module load cudnn/5.1_cuda-8.0
 
-python ../whale-tale.py epochs10.csv 10 ../input ../augmented-correct-rotation > epochs10.log
+python ../whale-tale.py epochs10.csv 10 ../test ../input ../augmented-correct-rotation > epochs10.log

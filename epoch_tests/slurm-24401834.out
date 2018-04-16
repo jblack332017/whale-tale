@@ -1,0 +1,49 @@
+Using TensorFlow backend.
+2018-04-14 19:26:11.771187: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:06:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-14 19:26:11.966293: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0xaa9aeb0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-14 19:26:11.967492: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 1 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:07:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-14 19:26:12.166649: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0xaa9ece0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-14 19:26:12.167833: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 2 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:85:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-14 19:26:12.372635: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0xaac33e0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2018-04-14 19:26:12.373807: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 3 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.8235
+pciBusID 0000:86:00.0
+Total memory: 11.17GiB
+Free memory: 11.11GiB
+2018-04-14 19:26:12.374525: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 2
+2018-04-14 19:26:12.374539: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 0 and 3
+2018-04-14 19:26:12.374560: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 2
+2018-04-14 19:26:12.374569: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 1 and 3
+2018-04-14 19:26:12.374578: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 0
+2018-04-14 19:26:12.374586: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 2 and 1
+2018-04-14 19:26:12.375159: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 0
+2018-04-14 19:26:12.375171: I tensorflow/core/common_runtime/gpu/gpu_device.cc:832] Peer access not supported between device ordinals 3 and 1
+2018-04-14 19:26:12.375234: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 1 2 3 
+2018-04-14 19:26:12.375240: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y Y N N 
+2018-04-14 19:26:12.375245: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y Y N N 
+2018-04-14 19:26:12.375249: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 2:   N N Y Y 
+2018-04-14 19:26:12.375253: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 3:   N N Y Y 
+2018-04-14 19:26:12.375266: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:06:00.0)
+2018-04-14 19:26:12.375271: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:07:00.0)
+2018-04-14 19:26:12.375276: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:2) -> (device: 2, name: Tesla K80, pci bus id: 0000:85:00.0)
+2018-04-14 19:26:12.375280: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:3) -> (device: 3, name: Tesla K80, pci bus id: 0000:86:00.0)
+2018-04-14 19:26:19.133804: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2358 get requests, put_count=2104 evicted_count=1000 eviction_rate=0.475285 and unsatisfied allocation rate=0.574215
+2018-04-14 19:26:19.133839: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 100 to 110
+2018-04-14 19:26:28.182861: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:247] PoolAllocator: After 2498 get requests, put_count=2656 evicted_count=1000 eviction_rate=0.376506 and unsatisfied allocation rate=0.346277
+2018-04-14 19:26:28.182891: I tensorflow/core/common_runtime/gpu/pool_allocator.cc:259] Raising pool_size_limit_ from 256 to 281
