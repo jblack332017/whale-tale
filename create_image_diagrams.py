@@ -25,7 +25,7 @@ def plot_images(imgs, labels, first_image, rows=4):
     # Set figure to 13 inches x 8 inches
     figure, big_axes = plt.subplots( figsize=(13, 15) , nrows=rows+1, ncols=1, sharey=True)
 
-    row_labels = ["Original Image", "Rotation", "Shift", "Shear", "Zoom", "Greyscale", "All Techniques"]
+    row_labels = ["Original Image", "Rotation", "Shear", "Zoom", "Greyscale", "All Techniques"]
     for row, big_ax in enumerate(big_axes, start=0):
         big_ax.set_title(row_labels[row], fontsize=16)
         # Turn off axis lines and ticks of the big subplot
@@ -67,10 +67,10 @@ imgs = imgs +  [
     for _ in range(5)]
 # plot_images(imgs, None, rows=1)
 
-imgs = imgs +  [
-    random_shift(img_arr, wrg=0.1, hrg=0.3, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
-    for _ in range(5)]
-# plot_images(imgs, None, rows=1)
+# imgs = imgs +  [
+#     random_shift(img_arr, wrg=0.1, hrg=0.3, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
+#     for _ in range(5)]
+# # plot_images(imgs, None, rows=1)
 
 imgs = imgs + [
     random_shear(img_arr, intensity=0.4, row_axis=0, col_axis=1, channel_axis=2, fill_mode='nearest')
@@ -107,6 +107,6 @@ def augmentation_pipeline(img_arr):
     return img_arr
 
 imgs = imgs +  [augmentation_pipeline(img_arr) for _ in range(5)]
-plot_images(imgs, None, img_arr, rows=6)
+plot_images(imgs, None, img_arr, rows=5)
 
 plt.show()

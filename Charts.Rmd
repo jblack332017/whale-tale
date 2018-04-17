@@ -19,6 +19,8 @@ library(gridExtra)
 library(GetoptLong)
 library(xtable)
 library(knitr)
+library(reshape2)
+library(grid)
 ```
 
 ## R Markdown
@@ -178,6 +180,164 @@ colnames(de) <- x
 countsFrame <- rbind(countsFrame, de)
 
 kable(countsFrame)
+
+
+```
+
+
+```{r}
+epochsFrame <- data.frame(matrix(ncol = 3, nrow = 0))
+x <- c("Epoch Count", "Training Accuracy", "Kaggle MAP Score")
+colnames(countsFrame) <- x
+
+de<-data.frame(10, .0352, .32538)
+colnames(de) <- x
+epochsFrame <- rbind(epochsFrame, de)
+
+de<-data.frame(20, .0888, .23156)
+colnames(de) <- x
+epochsFrame <- rbind(epochsFrame, de)
+
+de<-data.frame(40, .606, .16363)
+colnames(de) <- x
+epochsFrame <- rbind(epochsFrame, de)
+
+de<-data.frame(60, .672, .11876)
+colnames(de) <- x
+epochsFrame <- rbind(epochsFrame, de)
+
+de<-data.frame(80, .796, NA)
+colnames(de) <- x
+epochsFrame <- rbind(epochsFrame, de)
+
+epochsFrame.m <- melt(epochsFrame, id.vars='Epoch Count')
+
+```
+
+```{r}
+epochsSmallFrame <- data.frame(matrix(ncol = 3, nrow = 0))
+x <- c("Epoch Count", "Training Accuracy", "Kaggle MAP Score")
+colnames(epochsSmallFrame) <- x
+
+de<-data.frame(3, .035, .32846)
+colnames(de) <- x
+epochsSmallFrame <- rbind(epochsSmallFrame, de)
+
+de<-data.frame(5, .0352, .32891)
+colnames(de) <- x
+epochsSmallFrame <- rbind(epochsSmallFrame, de)
+
+de<-data.frame(6, .0352, .32827)
+colnames(de) <- x
+epochsSmallFrame <- rbind(epochsSmallFrame, de)
+
+de<-data.frame(8, .0354, .32681)
+colnames(de) <- x
+epochsSmallFrame <- rbind(epochsSmallFrame, de)
+
+epochsSmallFrame.m <- melt(epochsSmallFrame, id.vars='Epoch Count')
+
+
+```
+
+```{r}
+ggplot(epochsFrame.m, aes(fill=variable, y=value, x=epochsFrame.m$`Epoch Count`)) + 
+    geom_bar(position="dodge", stat="identity") +
+    labs(x="Epoch Count", y="", title="Training Accuracy and\nMAP at Epic Counts") +
+    theme_wsj() +
+    theme(axis.title=element_text(size=14)) +
+    theme(legend.position="right") +
+    theme(legend.title=element_blank(), legend.direction = "vertical") +
+    scale_x_continuous(breaks=c(10, 20, 40, 60, 80))
+    
+
+```
+
+
+
+```{r}
+ggplot(epochsSmallFrame.m, aes(fill=variable, y=value, x=epochsSmallFrame.m$`Epoch Count`)) + 
+    geom_bar(position="dodge", stat="identity") +
+    labs(x="Epoch Count", y="", title="Training Accuracy and\nMAP at Epic Counts") +
+    theme_wsj() +
+    theme(axis.title=element_text(size=14)) +
+    theme(legend.position="right") +
+    theme(legend.title=element_blank(), legend.direction = "vertical") +
+    scale_x_continuous(breaks=c(3, 5, 6, 8))
+
+```
+
+
+```{r}
+newWhaleFrame <- data.frame(matrix(ncol = 3, nrow = 0))
+x <- c("Label Status", "Kaggle MAP Score")
+colnames(newWhaleFrame) <- x
+
+de<-data.frame("With Label", .32827)
+colnames(de) <- x
+newWhaleFrame <- rbind(newWhaleFrame, de)
+
+de<-data.frame("Without Label", .07011)
+colnames(de) <- x
+newWhaleFrame <- rbind(newWhaleFrame, de)
+```
+
+```{r}
+ggplot(newWhaleFrame, aes(x=newWhaleFrame$`Label Status`, y=newWhaleFrame$`Kaggle MAP Score`, fill=newWhaleFrame$`Label Status`)) + 
+  geom_bar(stat="identity") +
+  labs(x="new_whale Label Status", y="Kaggle MAP Score", title="Success With and Without\nnew_whale Label") +
+  theme_wsj() +
+  theme(axis.title=element_text(size=14)) +
+  theme(legend.position="none")
+
+
+```
+
+
+```{r}
+trainingSetFrame <- data.frame(matrix(ncol = 2, nrow = 0))
+x <- c("Training Set", "Kaggle MAP Score")
+colnames(trainingSetFrame) <- x
+
+
+de<-data.frame("Original Images", .32816)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Shear", .32890)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Rotation", .32891)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Zoom", .32823)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Grayscale", .32824)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("All Techniques", .32836)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Large", .24307)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+```
+
+```{r}
+ggplot(trainingSetFrame, aes(x=trainingSetFrame$`Training Set`, y=trainingSetFrame$`Kaggle MAP Score`, fill=trainingSetFrame$`Training Set`)) + 
+  geom_bar(stat="identity") +
+  labs(x="Training Set", y="Kaggle MAP Score", title="Success with Augmented Sets") +
+  theme_wsj() +
+  theme(axis.title=element_text(size=14)) +
+  theme(legend.position="none")
+  + ylim(0,50)
 
 
 ```
