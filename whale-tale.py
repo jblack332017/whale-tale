@@ -14,8 +14,9 @@ from graphics import plotHistory
 from labelMaker import chooseLabels
 
 output = sys.argv[1]
-training = training_data(sys.argv[2:])
-testing = test_data()
+epochs = int(sys.argv[2])
+training = training_data(sys.argv[4:])
+testing = test_data(sys.argv[3])
 train_images = training['train_images']
 train_labels = training['train_labels']
 test_images = testing['test_images']
@@ -33,7 +34,6 @@ train_data = train_images.reshape(train_images.shape[0], nRows, nCols, nDims)
 input_shape = (nDims, nRows, nCols)
 
 # Training parameters
-epochs = 20;
 batch_size = 32;
 
 model = ResnetBuilder.build_resnet_34(input_shape, nClasses)

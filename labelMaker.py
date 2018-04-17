@@ -1,7 +1,8 @@
 import numpy as np
 
 def getTopFive(a):
-  return np.argpartition(a, -5)[-5:]
+  top5 = np.argpartition(a, -5)[-5::]
+  return top5[::-1]
 
 def chooseLabels(probabilities, classnames, imagenames, outputPath):
   outFile = open(outputPath, 'w');
