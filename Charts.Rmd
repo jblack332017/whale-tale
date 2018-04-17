@@ -21,6 +21,7 @@ library(xtable)
 library(knitr)
 library(reshape2)
 library(grid)
+library(scales)
 ```
 
 ## R Markdown
@@ -43,11 +44,13 @@ print(input_freq)
 ggplot(input_freq, aes(x=Var1, y=Freq)) +
 geom_bar(stat="identity", fill="#b83c31")  + 
 labs(x ="Images per class", y="Number of classes", color="#26628E") + 
-theme_wsj() +
-theme(axis.title=element_text(size=14)) + 
-ggtitle("Class and Image Ratio\nof Original Images") +
+theme_hc(bgcolor = "darkunica") +
+scale_colour_hc("darkunica") +
+theme(title=element_text(size=18)) +
+theme(axis.text = element_text(color = "white", size=12)) +
+ggtitle("Class and Image Ratio of Original Images") +
 theme(plot.title = element_text(hjust = 0.5)) +
-annotate("text", x = 22, y = 1750, label = qq("Total Images: @{nrow(inputData)}\n Total Classes: @{nrow(distinct_classes)}")) +
+annotate("text", size=4, color="white", x = 22, y = 1750, label = qq("Total Images: @{nrow(inputData)}\n Total Classes: @{nrow(distinct_classes)}")) +
 expand_limits(x = 0)
 ```
 
@@ -155,10 +158,6 @@ de<-data.frame("Random Rotation", nrow(combData_aug), min(as.numeric(as.characte
 colnames(de) <- x
 countsFrame <- rbind(countsFrame, de)
 
-de<-data.frame("Random Shift", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
-colnames(de) <- x
-countsFrame <- rbind(countsFrame, de)
-
 de<-data.frame("Random Shear", nrow(combData_aug), min(as.numeric(as.character(input_freq_aug$Var1))))
 colnames(de) <- x
 countsFrame <- rbind(countsFrame, de)
@@ -243,9 +242,11 @@ epochsSmallFrame.m <- melt(epochsSmallFrame, id.vars='Epoch Count')
 ```{r}
 ggplot(epochsFrame.m, aes(fill=variable, y=value, x=epochsFrame.m$`Epoch Count`)) + 
     geom_bar(position="dodge", stat="identity") +
-    labs(x="Epoch Count", y="", title="Training Accuracy and\nMAP at Epic Counts") +
-    theme_wsj() +
-    theme(axis.title=element_text(size=14)) +
+    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epic Counts") +
+    theme_hc(bgcolor = "darkunica") +
+    scale_colour_hc("darkunica") +
+    theme(title=element_text(size=18)) +
+    theme(axis.text = element_text(color = "white", size=12)) +
     theme(legend.position="right") +
     theme(legend.title=element_blank(), legend.direction = "vertical") +
     scale_x_continuous(breaks=c(10, 20, 40, 60, 80))
@@ -258,9 +259,11 @@ ggplot(epochsFrame.m, aes(fill=variable, y=value, x=epochsFrame.m$`Epoch Count`)
 ```{r}
 ggplot(epochsSmallFrame.m, aes(fill=variable, y=value, x=epochsSmallFrame.m$`Epoch Count`)) + 
     geom_bar(position="dodge", stat="identity") +
-    labs(x="Epoch Count", y="", title="Training Accuracy and\nMAP at Epic Counts") +
-    theme_wsj() +
-    theme(axis.title=element_text(size=14)) +
+    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epic Counts") +
+    theme_hc(bgcolor = "darkunica") +
+    scale_colour_hc("darkunica") +
+    theme(title=element_text(size=18)) +
+    theme(axis.text = element_text(color = "white", size=12)) +
     theme(legend.position="right") +
     theme(legend.title=element_blank(), legend.direction = "vertical") +
     scale_x_continuous(breaks=c(3, 5, 6, 8))
@@ -285,9 +288,11 @@ newWhaleFrame <- rbind(newWhaleFrame, de)
 ```{r}
 ggplot(newWhaleFrame, aes(x=newWhaleFrame$`Label Status`, y=newWhaleFrame$`Kaggle MAP Score`, fill=newWhaleFrame$`Label Status`)) + 
   geom_bar(stat="identity") +
-  labs(x="new_whale Label Status", y="Kaggle MAP Score", title="Success With and Without\nnew_whale Label") +
-  theme_wsj() +
-  theme(axis.title=element_text(size=14)) +
+  labs(x="new_whale Label Status", y="Kaggle MAP Score", title="Success With and Without new_whale Label") +
+  theme_hc(bgcolor = "darkunica") +
+  scale_colour_hc("darkunica") +
+  theme(title=element_text(size=18)) +
+  theme(axis.text = element_text(color = "white", size=12)) +
   theme(legend.position="none")
 
 
@@ -301,6 +306,10 @@ colnames(trainingSetFrame) <- x
 
 
 de<-data.frame("Original Images", .32816)
+colnames(de) <- x
+trainingSetFrame <- rbind(trainingSetFrame, de)
+
+de<-data.frame("Duplicate Images", .32770)
 colnames(de) <- x
 trainingSetFrame <- rbind(trainingSetFrame, de)
 
@@ -328,16 +337,32 @@ de<-data.frame("Large", .24307)
 colnames(de) <- x
 trainingSetFrame <- rbind(trainingSetFrame, de)
 
+
 ```
 
 ```{r}
 ggplot(trainingSetFrame, aes(x=trainingSetFrame$`Training Set`, y=trainingSetFrame$`Kaggle MAP Score`, fill=trainingSetFrame$`Training Set`)) + 
   geom_bar(stat="identity") +
   labs(x="Training Set", y="Kaggle MAP Score", title="Success with Augmented Sets") +
-  theme_wsj() +
-  theme(axis.title=element_text(size=14)) +
-  theme(legend.position="none")
-  + ylim(0,50)
+  theme_hc(bgcolor = "darkunica") +
+  scale_colour_hc("darkunica") +
+  theme(title=element_text(size=18)) +
+  theme(axis.text = element_text(color = "white", size=12)) +
+  theme(legend.position="none") +
+  scale_y_continuous(limits=c(.24,.329),oob = rescale_none) +
+  coord_flip() 
+```
 
-
+```{r}
+misleadingTrainingSetFrame <- head(trainingSetFrame,-1)
+ggplot(misleadingTrainingSetFrame, aes(x=misleadingTrainingSetFrame$`Training Set`, y=misleadingTrainingSetFrame$`Kaggle MAP Score`, fill=misleadingTrainingSetFrame$`Training Set`)) + 
+  geom_bar(stat="identity") +
+  labs(x="Training Set", y="Kaggle MAP Score", title="Success with Augmented Sets") +
+  theme_hc(bgcolor = "darkunica") +
+  scale_colour_hc("darkunica") +
+  theme(title=element_text(size=18)) +
+  theme(axis.text = element_text(color = "white", size=12)) +
+  theme(legend.position="none") +
+  scale_y_continuous(limits=c(.3275,.329),oob = rescale_none) +
+  coord_flip() 
 ```
