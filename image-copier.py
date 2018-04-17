@@ -2,7 +2,9 @@ from os import listdir
 from os.path import isfile, join
 import sys
 import shutil
-
+import pandas as pd
+import csv
+import random
 
 INPUT_DIR = sys.argv[1]
 OUTPUT_DIR = sys.argv[2]
@@ -11,7 +13,7 @@ OUTPUT_DIR = sys.argv[2]
 
 train_df = pd.read_csv(INPUT_DIR + '/train.csv')
 
-csv_file = open(OUTPUT_DIR + 'train.csv', 'w')
+csv_file = open(OUTPUT_DIR + '/train.csv', 'w')
 csv_writer = csv.writer(csv_file)
 csv_writer.writerow(['Image', 'Id'])
 
