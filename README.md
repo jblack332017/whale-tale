@@ -1,4 +1,4 @@
-# whale-tale
+# Whale Tale
 
 #### All Code for our submissions for the Kaggle Humpback Whale Identification Challenge https://www.kaggle.com/c/whale-categorization-playground
 
