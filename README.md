@@ -49,13 +49,13 @@ $ python create_image_diagrams.py
 ### image-augmenter.py
 Create augmented image sets
 ```
-python image-augmenter.py <INPUT_DIR> <OUTPUT_DIR>
+$ python image-augmenter.py <INPUT_DIR> <OUTPUT_DIR>
 ```
 
 ### image-copier.py
 Create copied image sets
 ```
-python image-copier.py <INPUT_DIR> <OUTPUT_DIR>
+$ python image-copier.py <INPUT_DIR> <OUTPUT_DIR>
 ```
 
 ## Train Model and Predict Test Images
