@@ -242,7 +242,7 @@ epochsSmallFrame.m <- melt(epochsSmallFrame, id.vars='Epoch Count')
 ```{r}
 ggplot(epochsFrame.m, aes(fill=variable, y=value, x=epochsFrame.m$`Epoch Count`)) + 
     geom_bar(position="dodge", stat="identity") +
-    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epic Counts") +
+    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epoch Counts") +
     theme_hc(bgcolor = "darkunica") +
     scale_colour_hc("darkunica") +
     theme(title=element_text(size=18)) +
@@ -259,7 +259,7 @@ ggplot(epochsFrame.m, aes(fill=variable, y=value, x=epochsFrame.m$`Epoch Count`)
 ```{r}
 ggplot(epochsSmallFrame.m, aes(fill=variable, y=value, x=epochsSmallFrame.m$`Epoch Count`)) + 
     geom_bar(position="dodge", stat="identity") +
-    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epic Counts") +
+    labs(x="Epoch Count", y="", title="Training Accuracy and MAP at Epoch Counts") +
     theme_hc(bgcolor = "darkunica") +
     scale_colour_hc("darkunica") +
     theme(title=element_text(size=18)) +
