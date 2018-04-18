@@ -37,4 +37,29 @@ epoch_tests - contains output and results from epoch testing
 output_skew_test - contains output and results from skew testing with new_whale
 submissions - contains submissions
 
+## Scripts
 
+
+### create_image_diagrams.py
+Creates augmented image diagrams
+```
+$ python create_image_diagrams.py
+```
+
+### image-augmenter.py
+Create augmented image sets
+```
+python image-augmenter.py <INPUT_DIR> <OUTPUT_DIR>
+```
+
+### image-copier.py
+Create copied image sets
+```
+python image-copier.py <INPUT_DIR> <OUTPUT_DIR>
+```
+
+## Train Model and Predict Test Images
+
+```
+$ python whale-tale.py <OUTPUT_PREDICTION_CSV> <TRAINING_SET1> <TRAINING_SET2> ... > <OUTPUT_LOG>
+```
